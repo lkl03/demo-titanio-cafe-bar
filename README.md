@@ -1,2 +1,7 @@
-# demo-titanio-cafe-bar
-Demo web para Titanio café bar — diseñada por eterlab.
+# Titanio café bar
+
+Sitio web demo diseñado por [eterlab.](https://eterlab.co)
+
+## Editar
+
+Modificá `index.html` para personalizar el sitio.
