@@ -1,0 +1,210 @@
+<!DOCTYPE html><html lang="es"><head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Titanio café bar — Experiencia gastronómica en Buenos Aires</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=Inter:wght@300;400;500&family=Montserrat:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;border:none;cursor:pointer;background:transparent;color:inherit}
+body::before{
+  content:'';position:fixed;inset:0;pointer-events:none;z-index:1;opacity:0.04;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+@keyframes rise{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadein{from{opacity:0}to{opacity:1}}
+@keyframes widen{from{width:0}to{width:100%}}
+@keyframes slideLeft{from{opacity:0;transform:translateX(40px)}to{opacity:1;transform:translateX(0)}}
+@keyframes scaleIn{from{opacity:0;transform:scale(0.96)}to{opacity:1;transform:scale(1)}}
+.reveal{opacity:0;animation:rise .9s cubic-bezier(.2,.8,.2,1) forwards}
+.reveal.d1{animation-delay:.1s}
+.reveal.d2{animation-delay:.25s}
+.reveal.d3{animation-delay:.4s}
+.reveal.d4{animation-delay:.55s}
+.reveal.d5{animation-delay:.7s}
+.scroll-reveal{opacity:0;transform:translateY(32px);transition:opacity .9s cubic-bezier(.2,.8,.2,1),transform .9s cubic-bezier(.2,.8,.2,1)}
+.scroll-reveal.visible{opacity:1;transform:translateY(0)}
+
+:root{--bg:#1a1410;--surface:#241e18;--text:#f0e6d8;--muted:#b8a694;--accent:#d4a04a;--accent-soft:rgba(212,160,74,0.12);--border:rgba(240,230,216,0.1);--font-display:'Playfair Display',serif;--font-body:'Inter',sans-serif}
+body{font-family:var(--font-body);background:var(--bg);color:var(--text);font-size:17px;line-height:1.7;font-weight:300}
+h1,h2,h3{font-family:var(--font-display);letter-spacing:-0.02em;line-height:1.05;font-weight:400}
+nav{position:sticky;top:0;z-index:50;padding:28px 48px;backdrop-filter:blur(20px);background:rgba(0,0,0,0.7);border-bottom:1px solid var(--border)}
+nav .inner{display:flex;align-items:center;justify-content:space-between;max-width:1600px;margin:0 auto}
+nav .logo{font-family:var(--font-display);font-size:24px;font-weight:400;letter-spacing:0.02em}
+nav .cta{font-size:13px;letter-spacing:0.15em;text-transform:uppercase;padding:12px 24px;border:1px solid var(--accent);color:var(--accent);transition:all .3s}
+nav .cta:hover{background:var(--accent);color:var(--bg)}
+@media(max-width:768px){nav{padding:20px 24px}nav .logo{font-size:20px}nav .cta{font-size:11px;padding:10px 18px}}
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1552566626-52f8b828add9?w=1600&q=80&auto=format&fit=crop') center/cover no-repeat;filter:brightness(0.45) contrast(1.1)}
+.hero-grid{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr;gap:0;width:100%;min-height:100vh;align-items:end}
+.hero-left{padding:120px 48px 80px 80px}
+.hero-right{padding:120px 80px 80px 48px;text-align:right;border-left:1px solid rgba(255,255,255,0.1);display:flex;flex-direction:column;justify-content:flex-end;align-items:flex-end}
+.hero-eyebrow{font-size:11px;letter-spacing:0.4em;text-transform:uppercase;color:var(--accent);margin-bottom:48px;font-weight:500;font-family:var(--font-body)}
+.hero-eyebrow::before{content:'—  '}
+.hero h1{font-size:clamp(56px,8vw,128px);color:#fff;margin-bottom:0;font-weight:300;letter-spacing:-0.03em}
+.hero-about{font-size:18px;color:rgba(255,255,255,0.75);max-width:420px;margin-bottom:40px;line-height:1.7}
+.cta-line{display:flex;flex-direction:column;gap:16px;align-items:flex-end}
+.cta-link{display:inline-flex;align-items:center;gap:12px;padding:16px 0;font-size:14px;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent);border-bottom:1px solid var(--accent);transition:all .3s;font-weight:500}
+.cta-link:hover{gap:20px;color:#fff}
+@media(max-width:968px){.hero-grid{grid-template-columns:1fr}.hero-left{padding:120px 24px 40px}.hero-right{padding:0 24px 80px;text-align:left;border-left:0;align-items:flex-start}.cta-line{align-items:flex-start}}
+.proof-row{padding:32px 0;background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.proof-inner{display:flex;align-items:center;justify-content:center;gap:56px;flex-wrap:wrap;font-size:13px;letter-spacing:0.1em;color:var(--muted);max-width:1400px;margin:0 auto;padding:0 40px;text-transform:uppercase}
+.proof-big{font-family:var(--font-display);font-size:36px;font-weight:400;color:var(--accent);letter-spacing:0}
+.stars{letter-spacing:6px;color:var(--accent);font-size:16px}
+section.block{padding:180px 0;position:relative}
+.container{max-width:1200px;margin:0 auto;padding:0 48px}
+@media(max-width:768px){section.block{padding:100px 0}.container{padding:0 24px}}
+.about-row{display:grid;grid-template-columns:1fr 2fr;gap:120px;align-items:start}
+.about-label{font-size:11px;letter-spacing:0.4em;text-transform:uppercase;color:var(--accent);font-weight:500}
+.about-h2{font-size:clamp(40px,5vw,72px);font-weight:300;margin-bottom:48px;letter-spacing:-0.02em}
+.about-body{font-size:20px;line-height:1.8;color:rgba(255,255,255,0.75);max-width:640px}
+.about-body p{margin-bottom:24px}
+@media(max-width:968px){.about-row{grid-template-columns:1fr;gap:40px}}
+.services-monolith{margin-top:140px;border-top:1px solid var(--border)}
+.svc-line{display:grid;grid-template-columns:80px 1fr auto;gap:40px;align-items:center;padding:48px 0;border-bottom:1px solid var(--border);transition:all .5s cubic-bezier(.2,.8,.2,1);cursor:pointer;position:relative;overflow:hidden}
+.svc-line::before{content:'';position:absolute;left:0;top:0;bottom:0;width:0;background:var(--accent-soft);transition:width .5s cubic-bezier(.2,.8,.2,1);z-index:-1}
+.svc-line:hover::before{width:100%}
+.svc-line:hover{padding-left:32px;padding-right:32px}
+.svc-line .num{font-family:var(--font-display);font-size:20px;color:var(--accent);font-weight:400;letter-spacing:0.05em}
+.svc-line .main h3{font-size:clamp(24px,2.8vw,36px);font-weight:400;margin-bottom:8px}
+.svc-line .main p{font-size:15px;color:var(--muted);line-height:1.6}
+.svc-line .arrow{font-size:24px;color:var(--accent);transition:transform .4s}
+.svc-line:hover .arrow{transform:translateX(12px)}
+@media(max-width:768px){.svc-line{grid-template-columns:60px 1fr;gap:16px;padding:32px 0}.svc-line:hover{padding:32px 16px}.svc-line .arrow{display:none}.svc-line .main h3{font-size:22px}}
+.diff-wrap{margin-top:140px;padding:120px 0;background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.diff-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:80px}
+.diff-item{border-top:1px solid var(--accent);padding-top:32px}
+.diff-item .n{font-family:var(--font-display);font-size:14px;letter-spacing:0.2em;color:var(--accent);margin-bottom:32px;font-weight:500}
+.diff-item h3{font-size:24px;font-weight:400;margin-bottom:16px}
+.diff-item p{color:rgba(255,255,255,0.7);font-size:15px;line-height:1.7}
+@media(max-width:968px){.diff-grid{grid-template-columns:1fr;gap:40px}}
+.final-cta{padding:180px 0;text-align:center;background:radial-gradient(ellipse at center,rgba(212,160,74,0.12) 0%,transparent 70%)}
+.final-cta h2{font-size:clamp(56px,8vw,128px);color:#fff;margin-bottom:40px;font-weight:300;letter-spacing:-0.03em}
+.final-cta p{font-size:18px;color:rgba(255,255,255,0.7);margin-bottom:56px;max-width:520px;margin-left:auto;margin-right:auto}
+.final-cta .btn{display:inline-flex;align-items:center;gap:14px;padding:20px 56px;background:var(--accent);color:var(--bg);font-weight:500;font-size:15px;letter-spacing:0.15em;text-transform:uppercase;transition:all .3s;border-radius:0}
+.final-cta .btn:hover{transform:translateY(-3px);box-shadow:0 20px 50px #d4a04a80}
+footer.main{padding:80px 0 48px;border-top:1px solid var(--border)}
+footer.main .inner{display:grid;grid-template-columns:2fr 1fr 1fr;gap:48px;max-width:1200px;margin:0 auto;padding:0 48px}
+footer.main .brand{font-family:var(--font-display);font-size:32px;font-weight:400;margin-bottom:16px}
+footer.main .tag{color:var(--muted);font-size:14px;max-width:320px;line-height:1.8}
+footer.main .col h4{font-size:11px;letter-spacing:0.3em;text-transform:uppercase;color:var(--accent);margin-bottom:20px;font-weight:500}
+footer.main .col p{font-size:14px;color:rgba(255,255,255,0.75);line-height:1.8}
+@media(max-width:768px){footer.main{padding:56px 0 32px}footer.main .inner{grid-template-columns:1fr;gap:32px;padding:0 24px}}
+</style></head><body>
+<nav><div class="inner"><span class="logo">Titanio café bar</span><a href="https://wa.me/5491166651174" target="_blank" rel="noopener" class="cta">Reservar mesa</a></div></nav>
+<section class="hero"><div class="hero-grid">
+<div class="hero-left">
+<div class="hero-eyebrow reveal">Restaurante</div>
+<h1 class="reveal d1">Experiencia gastronómica en Buenos Aires</h1>
+</div>
+<div class="hero-right">
+<p class="hero-about reveal d2">En Titanio café bar, ubicado en el corazón de la ciudad, nos esforzamos por ofrecer un ambiente acogedor y una carta de opciones gastronómicas y bebidas que satisfacen los gustos más variados. Nuestro objetivo es convertir cada visita en una experiencia memorable, con atención personalizada y un servicio de alta calidad.</p>
+<div class="cta-line reveal d3">
+<a href="https://wa.me/5491166651174" target="_blank" rel="noopener" class="cta-link">Reservar mesa →</a>
+<a href="tel:01166651174" class="cta-link">Llamar al 01166651174 →</a>
+</div>
+</div>
+</div></section>
+<div class="proof-row"><div class="proof-inner">
+<span class="proof-big">4.9</span><span class="stars">★★★★★</span>
+
+<span>Av. Olazábal 2340, C1428 Cdad. Autónoma de Buenos Aires, Argentina</span>
+</div></div>
+<section class="block scroll-reveal"><div class="container">
+<div class="about-row">
+<div class="about-label">El estudio</div>
+<div><h2 class="about-h2">Experiencia gastronómica en Buenos Aires</h2>
+<div class="about-body"><p>En Titanio café bar, ubicado en el corazón de la ciudad, nos esforzamos por ofrecer un ambiente acogedor y una carta de opciones gastronómicas y bebidas que satisfacen los gustos más variados. Nuestro objetivo es convertir cada visita en una experiencia memorable, con atención personalizada y un servicio de alta calidad.</p></div></div>
+</div>
+<div class="services-monolith">
+<a href="https://wa.me/5491166651174" target="_blank" rel="noopener" class="svc-line scroll-reveal" style="transition-delay:0ms">
+<div class="num">01</div>
+<div class="main"><h3>Café especial</h3><p>Disfrutá de nuestros cafés especiales, preparados con técnicas y productos de alta calidad para deleitar tu paladar</p></div>
+<div class="arrow">→</div>
+</a><a href="https://wa.me/5491166651174" target="_blank" rel="noopener" class="svc-line scroll-reveal" style="transition-delay:60ms">
+<div class="num">02</div>
+<div class="main"><h3>Cocktails artesanales</h3><p>Nuestros bartenders crean combinaciones únicas y deliciosas, utilizando ingredientes frescos y técnicas innovadoras para sorprender tus sentidos</p></div>
+<div class="arrow">→</div>
+</a><a href="https://wa.me/5491166651174" target="_blank" rel="noopener" class="svc-line scroll-reveal" style="transition-delay:120ms">
+<div class="num">03</div>
+<div class="main"><h3>Comida ligera</h3><p>Nuestra carta ofrece opciones de comida ligera y saludable, ideales para acompañar tus bebidas favoritas en un ambiente relajado</p></div>
+<div class="arrow">→</div>
+</a><a href="https://wa.me/5491166651174" target="_blank" rel="noopener" class="svc-line scroll-reveal" style="transition-delay:180ms">
+<div class="num">04</div>
+<div class="main"><h3>Eventos y reuniones</h3><p>Organizamos eventos y reuniones personalizadas, con opciones de catering y bebidas para hacer de tu celebración un éxito</p></div>
+<div class="arrow">→</div>
+</a><a href="https://wa.me/5491166651174" target="_blank" rel="noopener" class="svc-line scroll-reveal" style="transition-delay:240ms">
+<div class="num">05</div>
+<div class="main"><h3>Happy hour</h3><p>Vení a disfrutar de nuestros happy hours, con promociones y descuentos especiales en nuestros cocktails y comidas</p></div>
+<div class="arrow">→</div>
+</a><a href="https://wa.me/5491166651174" target="_blank" rel="noopener" class="svc-line scroll-reveal" style="transition-delay:300ms">
+<div class="num">06</div>
+<div class="main"><h3>Servicio de delivery</h3><p>Pedí tu comida y bebida favorita para llevar o delivery, y disfrutá de la experiencia Titanio café bar en el confort de tu hogar</p></div>
+<div class="arrow">→</div>
+</a>
+</div></div></section>
+<section class="diff-wrap scroll-reveal"><div class="container">
+<div class="about-row">
+<div class="about-label">Enfoque</div>
+<div><h2 class="about-h2" style="margin-bottom:24px">Principios que guían nuestro trabajo</h2></div>
+</div>
+<div class="diff-grid" style="margin-top:80px">
+<div class="diff-item scroll-reveal" style="transition-delay:0ms">
+<div class="n">01 / 03</div>
+<h3>Ambiente cálido</h3><p>Nuestro local cuenta con un diseño y decoración que invitan a la relajación y al disfrute, con espacios cómodos y bien iluminados</p>
+</div><div class="diff-item scroll-reveal" style="transition-delay:100ms">
+<div class="n">02 / 03</div>
+<h3>Producto fresco</h3><p>Nos esforzamos por utilizar solo ingredientes frescos y de alta calidad en nuestros platos y bebidas, para asegurar el mejor sabor y textura</p>
+</div><div class="diff-item scroll-reveal" style="transition-delay:200ms">
+<div class="n">03 / 03</div>
+<h3>Atención personalizada</h3><p>Nuestro equipo de profesionales se esfuerza por brindar un servicio personalizado y atento, para hacer que cada visita sea una experiencia positiva y memorable</p>
+</div>
+</div></div></section>
+<section class="final-cta scroll-reveal" id="contacto">
+<h2>Conversemos.</h2>
+<p></p>
+<a href="https://wa.me/5491166651174" target="_blank" rel="noopener" class="btn">Reservar mesa →</a>
+</section>
+<footer class="main"><div class="inner">
+<div><div class="brand">Titanio café bar</div><p class="tag">En Titanio café bar, ubicado en el corazón de la ciudad, nos esforzamos por ofrecer un ambiente acogedor y una carta de opciones gastronómicas y bebidas que satisfacen los gustos más variados. Nuestro objetivo es convertir cada visita en una experiencia memorable, con atención personalizada y un servicio de alta calidad.</p></div>
+<div class="col"><h4>Contacto</h4></div>
+<div class="col"><h4>Rubro</h4><p>Bar</p></div>
+</div></footer>
+<div class="eterlab-credit">
+  <div class="eterlab-credit-inner">
+    <p>©2026 | diseñado y desarrollado por <a href="https://eterlab.co/" target="_blank" rel="noreferrer">eterlab.</a></p>
+  </div>
+</div>
+<style>
+.eterlab-credit{background:#212121}
+.eterlab-credit-inner{max-width:1536px;margin:0 auto;padding:8px 16px}
+.eterlab-credit p{text-align:center;font-size:12px;color:rgba(255,255,255,0.8);font-family:'Montserrat',sans-serif;font-weight:400;margin:0;letter-spacing:0.01em}
+.eterlab-credit a{font-style:italic;color:rgba(255,255,255,0.9);transition:color .2s;text-decoration:none;font-weight:500}
+.eterlab-credit a:hover{color:#fff}
+</style><a href="https://wa.me/5491166651174" target="_blank" rel="noopener" class="wa-float" aria-label="WhatsApp">
+<svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+</a>
+<style>
+.wa-float{position:fixed;bottom:24px;right:24px;z-index:99;width:56px;height:56px;border-radius:50%;background:#25d366;display:flex;align-items:center;justify-content:center;box-shadow:0 12px 32px rgba(37,211,102,0.35);transition:all .3s cubic-bezier(.2,.8,.2,1)}
+.wa-float:hover{transform:scale(1.08) rotate(-5deg);box-shadow:0 20px 40px rgba(37,211,102,0.45)}
+.wa-float svg{width:28px;height:28px;fill:#fff}
+</style><script>
+(function(){
+  if (!('IntersectionObserver' in window)) {
+    document.querySelectorAll('.scroll-reveal').forEach(el => el.classList.add('visible'));
+    return;
+  }
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.scroll-reveal').forEach(el => io.observe(el));
+})();
+</script>
+</body></html>
